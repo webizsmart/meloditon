@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MelodiTON - 내 음악을 팬들과 영원히 공유하는 곳. 텔레그램 기반 음악 소장 NFT 플랫폼." />
+  <title>MelodiTON — 팬과 함께하는 온체인 음악 소장</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">🎵</span>
+        <span class="logo-text">MelodiTON</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">기능</a></li>
+        <li><a href="#rewards">팬 혜택</a></li>
+        <li><a href="#how">이용 방법</a></li>
+        <li><a href="#collection">컬렉션</a></li>
+        <li><a href="#roadmap">로드맵</a></li>
+      </ul>
+      <a href="#cta" class="btn btn-primary nav-cta">무료로 시작하기 →</a>
+      <button class="hamburger" id="hamburger" aria-label="메뉴">&#9776;</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#features">기능</a>
+      <a href="#rewards">팬 혜택</a>
+      <a href="#how">이용 방법</a>
+      <a href="#collection">컬렉션</a>
+      <a href="#roadmap">로드맵</a>
+      <a href="#cta" class="btn btn-primary">무료로 시작하기</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+      <canvas id="waveCanvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        TON Blockchain × Telegram Mini App
+      </div>
+      <h1 class="hero-title">
+        내 음악이<br />
+        <span class="gradient-text">팬들의 소장품이</span><br />
+        되는 곳
+      </h1>
+      <p class="hero-sub">아티스트와 팬을 직접 연결하는 텔레그램 음악 NFT 플랫폼 — 음원을 소장하고, 공연 티켓을 받고, 아티스트와 가까워지세요.</p>
+      <div class="hero-pills">
+        <span class="pill pill-green">✓ 저작권 자동 검증</span>
+        <span class="pill pill-blue">✓ 소장형 NFT (투기 목적 아님)</span>
+        <span class="pill pill-purple">✓ 실물 보상 연동</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary btn-lg">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"
+            class="btn-icon" />
+          텔레그램에서 시작하기
+        </a>
+        <a href="#features" class="btn btn-ghost btn-lg">서비스 알아보기 ↓</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-val">9억+</span><span class="stat-label">텔레그램 유저</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-val">100%</span><span class="stat-label">저작권 검증 업로드</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-val">0원</span><span class="stat-label">아티스트 등록비</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div class="app-header">
+            <span class="app-title">🎵 MelodiTON</span>
+            <span class="verified-badge">✓ 저작권 인증</span>
+          </div>
+          <div class="now-playing">
+            <div class="album-art" id="albumArt"></div>
+            <div class="track-info">
+              <div class="track-name">Midnight Echo</div>
+              <div class="track-artist">@indie_luna</div>
+              <div class="track-verify"><span class="vbadge">🔒 저작권 검증 완료</span></div>
+            </div>
+            <div class="waveform-bars" id="waveformBars"></div>
+            <div class="play-controls">
+              <button class="ctrl-btn">⏮</button>
+              <button class="ctrl-btn ctrl-play" id="playBtn">▶</button>
+              <button class="ctrl-btn">⏭</button>
+            </div>
+          </div>
+          <div class="reward-banner">
+            <div class="reward-icon">🎟️</div>
+            <div class="reward-text">
+              <div class="reward-title">소장 보상 도착!</div>
+              <div class="reward-sub">공연 티켓 응모권 1장</div>
+            </div>
+            <div class="reward-new">NEW</div>
+          </div>
+          <div class="nft-cards-preview">
+            <div class="nft-mini nft-active">
+              <div class="nft-mini-art" style="background:linear-gradient(135deg,#a855f7,#3b82f6)"></div>
+              <div class="nft-mini-info">
+                <div class="nft-mini-name">Midnight Echo</div>
+                <div class="nft-mini-tag">소장용 NFT</div>
+              </div>
+              <div class="nft-mini-badge">소장</div>
+            </div>
+            <div class="nft-mini">
+              <div class="nft-mini-art" style="background:linear-gradient(135deg,#ec4899,#f97316)"></div>
+              <div class="nft-mini-info">
+                <div class="nft-mini-name">Solar Drift</div>
+                <div class="nft-mini-tag">소장용 NFT</div>
+              </div>
+              <div class="nft-mini-badge">소장</div>
+            </div>
+          </div>
+          <div class="app-nav">
+            <button class="app-nav-btn active">🏠</button>
+            <button class="app-nav-btn">🎶</button>
+            <button class="app-nav-btn mint-btn">＋</button>
+            <button class="app-nav-btn">🎟️</button>
+            <button class="app-nav-btn">👤</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-label">핵심 기능</div>
+      <h2 class="section-title">아티스트와 팬을 위한 플랫폼</h2>
+      <p class="section-sub">복잡한 블록체인 지식 없이, 텔레그램 안에서 모든 것이 완결됩니다.</p>
+
+      <div class="role-tabs">
+        <button class="role-tab active" id="tabArtist" onclick="switchRole('artist')">🎤 아티스트</button>
+        <button class="role-tab" id="tabFan" onclick="switchRole('fan')">🎧 팬</button>
+      </div>
+
+      <div class="features-grid" id="featuresGrid">
+        <!-- JS가 채움 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- REWARDS -->
+  <section class="rewards" id="rewards">
+    <div class="container">
+      <div class="section-label">팬 혜택 시스템</div>
+      <h2 class="section-title">소장하면 받는 실물 혜택</h2>
+      <p class="section-sub">투기가 아닌 진짜 팬덤을 위한 보상입니다. NFT를 소장하면 아티스트가 직접 준비한 혜택이 자동으로 지급됩니다.</p>
+      <div class="rewards-grid">
+        <div class="reward-card rw-ticket">
+          <div class="rw-icon">🎟️</div>
+          <h3>공연 티켓 응모권</h3>
+          <p>NFT 소장자에게 아티스트 공연 티켓 우선 응모 자격 자동 부여. NFT 보유 수량에 따라 당첨 확률 증가.</p>
+          <div class="rw-tag">선착순 응모</div>
+        </div>
+        <div class="reward-card rw-album">
+          <div class="rw-icon">💿</div>
+          <h3>실물 음반 할인권</h3>
+          <p>NFT 소장 시 해당 아티스트의 실물 음반·굿즈 구매 시 최대 30% 할인쿠폰 자동 발급.</p>
+          <div class="rw-tag">즉시 발급</div>
+        </div>
+        <div class="reward-card rw-access">
+          <div class="rw-icon">🔐</div>
+          <h3>홀더 전용 채팅방</h3>
+          <p>NFT 소장자만 입장 가능한 아티스트 전용 채팅방 자동 연동. 미공개 곡 미리 듣기, 비하인드 공유 등.</p>
+          <div class="rw-tag">자동 연동</div>
+        </div>
+        <div class="reward-card rw-goods">
+          <div class="rw-icon">🎁</div>
+          <h3>아티스트 굿즈 교환권</h3>
+          <p>포토카드, 클리어파일, 포스터 등 아티스트가 직접 제작한 굿즈와 교환 가능한 쿠폰 지급.</p>
+          <div class="rw-tag">실물 교환</div>
+        </div>
+        <div class="reward-card rw-meet">
+          <div class="rw-icon">🌟</div>
+          <h3>팬미팅 우선 초대</h3>
+          <p>아티스트가 진행하는 온/오프라인 팬미팅에 일반 팬보다 우선 초대 혜택. 소장 NFT 수에 따라 등급 차등.</p>
+          <div class="rw-tag">등급 혜택</div>
+        </div>
+        <div class="reward-card rw-share">
+          <div class="rw-icon">📨</div>
+          <h3>채팅창 뮤직 카드</h3>
+          <p>소장한 NFT를 텔레그램 채팅방에 공유하면 즉시 재생 가능한 뮤직 카드로 표시. 바이럴 자동 확산.</p>
+          <div class="rw-tag">소셜 공유</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="container">
+      <div class="section-label">이용 방법</div>
+      <h2 class="section-title">아티스트라면 이렇게</h2>
+      <div class="how-grid">
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-num">01</div>
+            <div class="how-body">
+              <h3>텔레그램 봇 실행</h3>
+              <p>별도 앱 설치 없이 텔레그램 봇 링크 클릭 한 번으로 즉시 시작.</p>
+            </div>
+          </div>
+          <div class="how-connector"></div>
+          <div class="how-step">
+            <div class="how-num">02</div>
+            <div class="how-body">
+              <h3>음원 업로드 &amp; 저작권 검증</h3>
+              <p>MP3/WAV 업로드 시 오디오 핑거프린팅으로 <strong>자동 저작권 검증</strong>. 본인 창작곡만 등록 가능.</p>
+            </div>
+          </div>
+          <div class="how-connector"></div>
+          <div class="how-step">
+            <div class="how-num">03</div>
+            <div class="how-body">
+              <h3>소장형 NFT 발행</h3>
+              <p>곡명·설명 입력 후 'Mint' 클릭 → TON 블록체인에 영구 기록. <strong>소장용 1:n 컬렉터블</strong>로 발행.</p>
+            </div>
+          </div>
+          <div class="how-connector"></div>
+          <div class="how-step">
+            <div class="how-num">04</div>
+            <div class="how-body">
+              <h3>팬 혜택 설정</h3>
+              <p>소장 팬에게 줄 혜택(공연 티켓 응모권, 굿즈 할인, 팬미팅 초대 등)을 직접 설정.</p>
+            </div>
+          </div>
+          <div class="how-connector"></div>
+          <div class="how-step">
+            <div class="how-num">05</div>
+            <div class="how-body">
+              <h3>채널 공유 &amp; 팬과 소통</h3>
+              <p>텔레그램 채널에 뮤직 카드로 공유. 소장자 전용 채팅방에서 팬과 직접 소통.</p>
+            </div>
+          </div>
+        </div>
+        <div class="how-visual">
+          <div class="flow-card flow-upload">
+            <div class="flow-icon">🎵</div>
+            <div class="flow-label">음원 업로드</div>
+            <div class="flow-arrow-down">↓</div>
+          </div>
+          <div class="flow-card flow-verify">
+            <div class="flow-check">✓</div>
+            <div class="flow-label">저작권 자동 검증<br /><small>Audio Fingerprinting</small></div>
+            <div class="flow-arrow-down">↓</div>
+          </div>
+          <div class="flow-card flow-mint">
+            <div class="flow-icon">💎</div>
+            <div class="flow-label">소장형 NFT 발행<br /><small>TON Blockchain</small></div>
+            <div class="flow-arrow-down">↓</div>
+          </div>
+          <div class="flow-card flow-reward">
+            <div class="flow-icon">🎟️</div>
+            <div class="flow-label">팬 혜택 자동 지급<br /><small>티켓 · 굿즈 · 채팅방</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTION -->
+  <section class="collection" id="collection">
+    <div class="container">
+      <div class="section-label">소장 컬렉션</div>
+      <h2 class="section-title">지금 소장 가능한 트랙</h2>
+      <p class="section-sub">소장하면 실물 혜택이 함께 옵니다. 투기가 아닌, 진짜 팬을 위한 컬렉션입니다.</p>
+      <div class="collection-grid" id="collectionGrid"></div>
+      <div class="collection-notice">
+        <span class="notice-icon">ℹ️</span>
+        본 서비스의 NFT는 <strong>소장 목적의 디지털 1:n 컬렉터블</strong>이며, 투자·재판매 차익을 목적으로 하지 않습니다.
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH -->
+  <section class="tech" id="tech">
+    <div class="container">
+      <div class="section-label">기술 인프라</div>
+      <h2 class="section-title">안전하고 투명한 기술 기반</h2>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-logo">🔒</div>
+          <div class="tech-name">Audio Fingerprinting</div>
+          <div class="tech-desc">업로드 즉시 자동 저작권 검증. 타인의 음원 복제·무단 등록 원천 차단.</div>
+          <div class="tech-badge tech-badge-kr">국내 서비스 핵심</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-logo">💎</div>
+          <div class="tech-name">TON Blockchain</div>
+          <div class="tech-desc">소장 기록의 영구성·투명성 보장. 아티스트 창작물의 온체인 증명.</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-logo">📡</div>
+          <div class="tech-name">IPFS / Pinata</div>
+          <div class="tech-desc">탈중앙화 분산 저장소에 음원을 영구 보존. 서버 다운에도 소장본 유지.</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-logo">🔗</div>
+          <div class="tech-name">TON Connect 2.0</div>
+          <div class="tech-desc">텔레그램 내장 지갑 클릭 한 번 연결. 별도 앱 설치 없이 지갑 완성.</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-logo">⚛️</div>
+          <div class="tech-name">React / Next.js</div>
+          <div class="tech-desc">Telegram WebApp SDK 기반 반응형 미니앱 UI. 모바일 최적화.</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-logo">📜</div>
+          <div class="tech-name">FunC Smart Contract</div>
+          <div class="tech-desc">소장 기록·혜택 지급·로열티 정산 자동화. 아티스트 수익 즉시 분배.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="roadmap" id="roadmap">
+    <div class="container">
+      <div class="section-label">로드맵</div>
+      <h2 class="section-title">개발 계획</h2>
+      <div class="timeline">
+        <div class="tl-item tl-done">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-phase">Phase 1 · Q1 2026 ✅ 완료</div>
+            <h3>기획 &amp; 저작권 검증 설계</h3>
+            <p>서비스 기획서, UX 와이어프레임, Audio Fingerprinting 파이프라인 설계. 소장형 NFT 스마트 컨트랙트 구조 확정.</p>
+          </div>
+        </div>
+        <div class="tl-item tl-active">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-phase">Phase 2 · Q2 2026 🚀 진행 중</div>
+            <h3>MVP 개발 &amp; 베타 테스트</h3>
+            <p>NFT 발행, 저작권 자동 검증, 팬 혜택(티켓·굿즈) 연동 개발. TON 테스트넷 배포, 아티스트 50팀 베타 모집.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-phase">Phase 3 · Q3 2026</div>
+            <h3>정식 서비스 출시 (국내)</h3>
+            <p>저작권법·콘텐츠법 준수 검토 완료 후 국내 서비스 출시. 아티스트 온보딩 캠페인 및 첫 소장 이벤트 진행.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-phase">Phase 4 · Q4 2026</div>
+            <h3>팬덤 생태계 확장</h3>
+            <p>공연 티켓 NFT, K-POP 아티스트 파트너십, 음반사 협력. 글로벌 서비스 준비.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="cta">
+    <div class="cta-bg">
+      <div class="orb orb4"></div>
+      <div class="orb orb5"></div>
+    </div>
+    <div class="container cta-inner">
+      <h2 class="cta-title">지금 등록하세요</h2>
+      <p class="cta-sub">아티스트라면 무료로, 팬이라면 소장을 위해. MelodiTON에서 음악의 새로운 가치를 만들어보세요.</p>
+      <div class="cta-tabs">
+        <div class="cta-tab-card">
+          <div class="cta-tab-icon">🎤</div>
+          <div class="cta-tab-title">아티스트로 시작</div>
+          <div class="cta-tab-desc">음원 등록 · NFT 발행 · 팬 혜택 설정</div>
+          <div class="cta-tab-price">무료</div>
+          <a href="#" class="btn btn-primary">아티스트 등록 →</a>
+        </div>
+        <div class="cta-tab-card cta-tab-fan">
+          <div class="cta-tab-icon">🎧</div>
+          <div class="cta-tab-title">팬으로 시작</div>
+          <div class="cta-tab-desc">음원 소장 · 티켓 응모 · 굿즈 혜택</div>
+          <div class="cta-tab-price">소장부터</div>
+          <a href="#" class="btn btn-primary">컬렉션 보기 →</a>
+        </div>
+      </div>
+      <div class="cta-form-row">
+        <input type="email" placeholder="이메일로 얼리 액세스 신청" id="emailInput" />
+        <button class="btn btn-primary" onclick="handleSignup()">신청하기 →</button>
+      </div>
+      <div class="cta-note" id="signupMsg"></div>
+      <div class="social-links">
+        <a href="#" class="social-btn">텔레그램 채널</a>
+        <a href="#" class="social-btn">트위터/X</a>
+        <a href="#" class="social-btn">깃허브</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="logo-icon">🎵</span><span class="logo-text">MelodiTON</span></div>
+        <p>팬과 아티스트를 위한 음악 소장 플랫폼</p>
+        <div class="footer-cert">
+          <span class="cert-badge">🔒 저작권 검증</span>
+          <span class="cert-badge">✓ 소장용 NFT</span>
+          <span class="cert-badge">🎟️ 실물 혜택 연동</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <strong>서비스</strong>
+          <a href="#features">핵심 기능</a>
+          <a href="#rewards">팬 혜택</a>
+          <a href="#collection">소장 컬렉션</a>
+          <a href="#how">이용 방법</a>
+        </div>
+        <div class="footer-col">
+          <strong>기술 &amp; 안전</strong>
+          <a href="#tech">기술 스택</a>
+          <a href="#roadmap">로드맵</a>
+          <a href="#">저작권 정책</a>
+          <a href="#">개인정보처리방침</a>
+        </div>
+        <div class="footer-col">
+          <strong>커뮤니티</strong>
+          <a href="#">텔레그램</a>
+          <a href="#">트위터/X</a>
+          <a href="#">깃허브</a>
+          <a href="#">아티스트 신청</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>본 서비스의 NFT는 디지털 소장 목적로만 제공되며, 투자·재판매 차익을 권유하지 않습니다. 음원 등록 시 저작권법 제102조에 따른 오디오 핑거프린팅 검증이 적용됩니다.</p>
+      <p class="footer-copy">© 2026 MelodiTON. Built on TON Blockchain.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
